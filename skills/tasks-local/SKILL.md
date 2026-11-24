@@ -21,6 +21,11 @@ milestones, status that tells the truth.
   handover.md            the session handover (wrap-up / continue)
 ```
 
+**A project's own statuses** (optional, as in hosted Tasks): a `statuses` list in its entry in
+`config.json`, in order, each `{"key": "code_review", "title": "Code review", "description": "A PR
+is open and waits for review.", "type": "IN_PROGRESS"}`. The type is `TODO`, `IN_PROGRESS` or
+`DONE`; at least one of each, at most 8. Without a list a project has To do, In progress and Done.
+
 A `.tasks/` folder can also come from hosted Tasks: every export (Settings › Export) carries the
 workspace in this layout, and the `move-to-local` skill copies it into the project.
 
@@ -35,6 +40,7 @@ key: APP-3
 type: TASK            # EPIC, TASK or BUG
 title: Export the report as CSV
 status: IN_PROGRESS   # TODO, IN_PROGRESS or DONE
+status_key: code_review  # optional: the project's own status, of that type
 epic: APP-1           # optional
 docs: [csv-export]    # optional: slugs in docs/
 started: 2026-11-11T09:30:00Z
@@ -72,6 +78,8 @@ approved document. Documents from hosted Tasks also carry their `key` (`DOC-12`)
 - **What's in progress:** the items with `status: IN_PROGRESS` (search the front matter, e.g.
   `grep -l "status: IN_PROGRESS" .tasks/items/*.md`).
 - **Start:** set `status: IN_PROGRESS` and `started`. **Finish:** `status: DONE` and `done`.
+- **Own statuses:** in a project with a `statuses` list, set `status_key` to the status whose
+  description fits as the work moves (`code_review`), and keep `status` on its type.
 - **Milestones:** add a dated line under Notes; rewrite Resume whenever the next step changes.
 - **Handover:** `wrap-up` writes `.tasks/handover.md` (next step, running or paused, open
   questions, recent decisions) instead of a Tasks document; `continue` reads it first.
