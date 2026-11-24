@@ -84,7 +84,8 @@ install the plugin. [AGENTS.md](AGENTS.md) tells it the steps for its own tool.
 - **Document:** a written plan or design. An epic starts from an approved document.
 - **Resume card:** a few lines on an item saying where the work stopped and what comes next.
 - **Handover:** the note `wrap-up` writes at the end of a session, so `continue` can start the next
-  one on a clean context.
+  one on a clean context. One per line of work (`Main session`, or a role), read and written by
+  name.
 - **MCP:** Model Context Protocol, the standard way AI tools call outside services. Tasks is an
   MCP server; this plugin connects your tool to it.
 - **Usage hook:** an optional script that tells Tasks how many tokens and how much time each item

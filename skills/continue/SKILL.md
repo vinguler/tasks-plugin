@@ -9,8 +9,10 @@ In local mode (`.tasks/config.json` says `"mode": "local"`) read `.tasks/handove
 items with `status: IN_PROGRESS` in `.tasks/items/` instead (see `tasks-local`).
 
 1. **Read the state, cheap reads first:**
-   - Your handover document, `Session handover (<your Tasks username>)` (`search` for it;
-     `get_document` with `full: true`).
+   - Your handover: `get_handover` with your line of work's name (`Main session`, or the role
+     you work as, e.g. `CTO`; see `wrap-up`). None yet, but an older document titled
+     `Session handover (<your Tasks username>)` exists (`search`): read that with `get_document`
+     (`full: true`); `wrap-up` makes it the handover.
    - `list_in_progress`; for the items the handover names, `get_context <key>` (resume card, last
      notes), not the whole item.
    - In a repository: `git status` and the last few commits.

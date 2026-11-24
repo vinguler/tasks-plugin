@@ -12,11 +12,13 @@ the `tasks-local` skill: Resume sections and notes in `.tasks/items/`, the hando
 1. **Items you worked on:** for each, `set_resume` with where you stopped and the exact next step,
    and `log_work` if something since the last note matters (decisions, commits, what is blocked).
    Leave the status as it really is: `IN_PROGRESS` if work remains, `DONE` only if finished.
-2. **Your handover document:** one per person, titled `Session handover (<your Tasks username>)`
-   (`search` finds it). If you don't know the user's username: `list_members`; with one member it's
-   theirs, otherwise ask once. Create it the
-   first time (`create_document`, at the documents root or in a `handovers/` folder), otherwise read
-   it with `lock: true` and rewrite it (`update_document` with its `version`). Keep it short:
+2. **Your handover:** one per line of work, found by name: `Main session` when you work for one
+   person, or the role you work as (`CTO`, `QA`), or `Main session (<username>)` when several
+   people share the workspace (`list_members`; ask once if unsure). Read it with `get_handover`
+   (`lock: true`) and write it with `set_handover` (`name`, the whole of it as `content`, its
+   `version`); the first `set_handover` creates it. An older handover document
+   (`Session handover (<username>)`, `search`) becomes it with `set_handover` and
+   `document: "<its key>"`, no copy. Keep it short:
    - **Next step:** the one thing the next session does first, with the item key.
    - **Running or paused:** anything still in flight (a build, a deploy, a background job) and how to
      check on it.
