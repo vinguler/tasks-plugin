@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.7.0 (2026-11-24)
+
+- Handovers by name. `wrap-up` writes the handover with `set_handover` (one per line of work:
+  `Main session`, a role such as `CTO`, or `Main session (<username>)` in a shared workspace) and
+  `continue` reads it with `get_handover`, instead of searching for a document by title. An
+  older `Session handover (<username>)` document becomes the handover with no copy
+  (`set_handover` with `document`). Needs Tasks with `get_handover` (2026-11-24).
+- `move-to-hosted`: `.tasks/handover.md` becomes the `Main session` handover; an import does
+  the same.
+
 ## 0.6.0 (2026-11-24)
 
 - Custom statuses per project. `tasks-workflow`: read a project's statuses with `get_project`

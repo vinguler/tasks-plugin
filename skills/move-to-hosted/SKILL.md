@@ -46,7 +46,7 @@ creates a new one). It is slower and doesn't keep the old keys.
      its `status` (`IN_PROGRESS` or `DONE`); measured time starts from the move, not from the
      local dates.
    Keep a map old key → new key.
-6. **Handover:** if `.tasks/handover.md` exists, write it as the user's handover document (see
+6. **Handover:** if `.tasks/handover.md` exists, write it as the `Main session` handover (`set_handover`, see
    `wrap-up`), with the old keys replaced by the new ones.
 7. **Usage log:** `~/.tasks/usage.jsonl` (local usage) is not uploaded; it stays on the machine.
    If you read it, skip lines that don't parse as JSON.
