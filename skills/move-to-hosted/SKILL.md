@@ -30,7 +30,9 @@ creates a new one). It is slower and doesn't keep the old keys.
 2. **Check before writing:** read `.tasks/config.json`, count the projects, documents and items, and
    tell the user what will be created. Ask before going on. Nothing is deleted locally.
 3. **Projects:** `list_projects`; reuse a project with the same key, else `create_project` with the
-   key and name from the config.
+   key and name from the config. A project with its own `statuses` in the config: only a person
+   sets statuses in Tasks (Project settings › Statuses), so ask the user to add them before you
+   move the items. (The archive import above brings them over by itself.)
 4. **Documents first** (epics need them): `create_document` per file in `docs/`, with its title,
    content and summary as `ai_summary`, in a folder `projects/<project name>/`. A local `approved`
    document needs approval in Tasks: `approve_document`, or ask the user if you may not. Keep a map
@@ -40,8 +42,9 @@ creates a new one). It is slower and doesn't keep the old keys.
    - `set_resume` with the Resume section;
    - one `log_work` with the old key and the notes, shortened to 600 characters
      (`Moved from local APP-3. <latest notes>`);
-   - the status with `set_status` (`IN_PROGRESS` or `DONE`; measured time starts from the move, not
-     from the local dates).
+   - the status with `set_status`: its `status_key` if the project in Tasks has that status, else
+     its `status` (`IN_PROGRESS` or `DONE`); measured time starts from the move, not from the
+     local dates.
    Keep a map old key → new key.
 6. **Handover:** if `.tasks/handover.md` exists, write it as the user's handover document (see
    `wrap-up`), with the old keys replaced by the new ones.

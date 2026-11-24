@@ -74,6 +74,14 @@ Small fixes skip to step 4 (a task or a bug may stand alone).
   last notes, an open request to the user. Don't read whole items or documents to orient yourself.
 - **Status drives measured time:** set the item `IN_PROGRESS` when you start, `DONE` when finished.
   Never pass `duration_minutes` unless the user asks.
+- **A project may have its own statuses** (Code review, QA, …): `get_project` lists each one's key,
+  title, type (to do, active, done) and what it is for, and `get_context` gives the item's. Move an
+  item to the status whose description fits (`set_status` with its key, e.g. `code_review`).
+  `TODO`, `IN_PROGRESS` and `DONE` still work everywhere: they mean the first status of that type.
+  Every active status counts as work time.
+- **Approval to start:** when `get_context` shows a `next_gate`, the item needs approval before it
+  moves out of to do. Someone other than its creator (or a person, as it says) approves it with
+  `review`; the approver may then start it. Don't work around a refusal: ask for the review.
 - **`log_work` at milestones:** what you did, decisions, commits; at most 600 characters. Keep the
   resume card (`set_resume`) current: where you stopped and the next step, so anyone can continue.
 - **Items are short:** a line or two on what the work is. The why lives in a document. An epic needs

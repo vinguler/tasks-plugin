@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.0 (2026-11-24)
+
+- Custom statuses per project. `tasks-workflow`: read a project's statuses with `get_project`
+  and move an item to the one whose description fits (`set_status` with its key); `TODO`,
+  `IN_PROGRESS` and `DONE` still mean the first status of their type. Approval to start: what
+  `next_gate` in `get_context` means and how to ask for the review.
+- `tasks-local`: a project's own `statuses` in `config.json` and an item's `status_key`, the same
+  as in hosted Tasks; exports and imports carry both.
+- `move-to-hosted`: statuses are set by a person in Tasks; items move to their `status_key`.
+
 ## 0.5.0 (2026-11-19)
 
 - README rewritten for people meeting the plugin for the first time: the cycle it gives your agent
