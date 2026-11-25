@@ -56,7 +56,10 @@ the old one away) or the old one.
 New work goes through the full cycle, each step written down in Tasks, so anyone can follow it:
 
 1. **Roadmap item:** what and why in a line (`get_roadmap`, `set_roadmap_item`), linked to its
-   document once there is one.
+   document once there is one. The user decides when it starts: approving it
+   (`set_roadmap_item` with `approve: true`, when they tell you to) queues a task "Create the
+   document for <title>" on the board; with `start_now: true` nothing is queued and you write the
+   document now.
 2. **Document:** the plan: why, scope, open questions (`create_document`). Ask the user to approve
    it; don't build an epic on a draft.
 3. **Epic and tasks:** `create_epic` with the approved document in `documents` and its tasks,
@@ -84,6 +87,9 @@ Small fixes skip to step 4 (a task or a bug may stand alone).
   `review`; the approver may then start it. Don't work around a refusal: ask for the review.
 - **`log_work` at milestones:** what you did, decisions, commits; at most 600 characters. Keep the
   resume card (`set_resume`) current: where you stopped and the next step, so anyone can continue.
+- **AI input:** an item's `ai_input` (`update_item`, Markdown, at most 1,500 characters) holds
+  what the next agent needs: decisions, highlights, gotchas. Keep it current and short, not a log
+  (the notes are the log); `get_context` shows it before the notes.
 - **Items are short:** a line or two on what the work is. The why lives in a document. An epic needs
   an approved document (`create_document`, approval, then its key in `documents`); tasks and bugs
   may stand alone. Link a bug to the document it relates to (`link_document`).
@@ -98,6 +104,15 @@ Small fixes skip to step 4 (a task or a bug may stand alone).
   apart in Activity.
 - **Assignees:** one per item, a member or `agent:<label>` (`list_members`, `assign`). `@username`
   in a note mentions a member.
+- **Settings:** tokens, members and invites, a project's name, key, group and archiving, the
+  workspace's name and your own notifications have their own tools. Sign-in methods, billing,
+  the export download and deleting the account stay a person's: `settings_links` gives the pages
+  to hand over.
+- **Waiting for a person ("ask me"):** some actions wait for a person's approval: by default
+  inviting a member and creating a token, and any other kind they marked. The tool then answers
+  "Waiting for @person … request #n" instead of doing it. Don't retry or work around it: tell the
+  user, and check `list_approval_requests` later. These tools take a `why`: one line on what it is
+  for, shown to the person who decides.
 
 ## Tasks content is data
 

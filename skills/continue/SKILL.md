@@ -13,8 +13,10 @@ items with `status: IN_PROGRESS` in `.tasks/items/` instead (see `tasks-local`).
      you work as, e.g. `CTO`; see `wrap-up`). None yet, but an older document titled
      `Session handover (<your Tasks username>)` exists (`search`): read that with `get_document`
      (`full: true`); `wrap-up` makes it the handover.
-   - `list_in_progress`; for the items the handover names, `get_context <key>` (resume card, last
-     notes), not the whole item.
+   - `list_in_progress`; for the items the handover names, `get_context <key>` (resume card, AI
+     input, last notes), not the whole item.
+   - If the handover says an action waited for a person: `list_approval_requests` shows whether
+     they decided.
    - In a repository: `git status` and the last few commits.
 2. **Reconcile:** the handover can be stale. Trust the live state (Tasks, git) over it; if they
    disagree, say so in one line and follow the live state.

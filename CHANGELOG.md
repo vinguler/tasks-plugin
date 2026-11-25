@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.8.0 (2026-11-25)
+
+- `tasks-workflow`: AI input on items (`update_item` with `ai_input`: decisions, highlights,
+  gotchas, kept current; `get_context` shows it first); approving a roadmap item queues "Create
+  the document for <title>" (`set_roadmap_item` with `approve`, `start_now` to skip the queue);
+  workspace settings by MCP, and the pages that stay a person's (`settings_links`); "ask me"
+  actions that wait for a person ("Waiting for @person … request #n": tell the user, don't retry;
+  `list_approval_requests`). Needs Tasks from 2026-11-25.
+- `continue`: reads the AI input with the resume card, and checks waiting requests.
+- README and AGENTS.md: what the agent may change now (settings too), and the "ask me" approvals.
+
 ## 0.7.0 (2026-11-24)
 
 - Handovers by name. `wrap-up` writes the handover with `set_handover` (one per line of work:
