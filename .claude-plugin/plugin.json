@@ -1,7 +1,7 @@
 {
   "name": "tasks",
   "displayName": "Tasks",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A documented development cycle for your AI agent: roadmap item, document, epic, tasks, done, kept in Tasks (tasks.vinguler.com) or local markdown. The MCP server with a browser log-in, workflow skills, handover and continue, and an optional usage hook.",
   "author": {
     "name": "VinGuler",

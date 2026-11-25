@@ -76,6 +76,9 @@ install the plugin. [AGENTS.md](AGENTS.md) tells it the steps for its own tool.
 - "Wrap up": it writes a handover for the next session.
 - "Continue": a new session resumes from that handover.
 - "Ask me when you need a decision": it files the question in Tasks and tells you.
+- "Approve roadmap item 3": Tasks queues "Create the document for …" on the board.
+- "Invite alex@example.com to the workspace": it waits for your approval first (see
+  [Privacy](#privacy-and-permissions)).
 - "Move this project to hosted Tasks" / "Take this workspace local."
 
 ## Words used here
@@ -83,6 +86,8 @@ install the plugin. [AGENTS.md](AGENTS.md) tells it the steps for its own tool.
 - **Item:** a unit of work, an *epic*, a *task* or a *bug*, with a key such as `REP-21`.
 - **Document:** a written plan or design. An epic starts from an approved document.
 - **Resume card:** a few lines on an item saying where the work stopped and what comes next.
+- **AI input:** a short section on an item with what the next agent needs: decisions made,
+  highlights, gotchas. Notes are the log; AI input is kept current.
 - **Handover:** the note `wrap-up` writes at the end of a session, so `continue` can start the next
   one on a clean context. One per line of work (`Main session`, or a role), read and written by
   name.
@@ -119,8 +124,14 @@ You can switch either way later with `move-to-hosted` or `move-to-local`.
 ## Privacy and permissions
 
 - **What your agent can change:** only what you ask it to do in Tasks, in the one workspace you
-  picked when you signed in. You can revoke that access any time in Tasks, under Settings › API
-  tokens.
+  picked when you signed in: items, notes, documents, the roadmap, and the workspace's settings
+  (projects, members, tokens, your notifications). Never your sign-in methods, billing or your
+  account's deletion: it gives you the page instead. You can revoke its access any time in Tasks,
+  under Settings › API tokens.
+- **"Ask me" actions wait for you:** inviting a member and creating a token wait for your approval
+  by default, and you can mark more (approving a document, archiving a project, …). The agent
+  then tells you it is waiting; you decide in Settings › Approvals, and the "needs you" email lists
+  them. Nothing you do yourself in the app ever waits.
 - **The usage hook is off until you agree.** The `tasks-workflow` skill asks on first use. If you
   say yes, it stores one report-only token in `~/.tasks/config.json`, readable by you only.
 - **What the hook sends:** counts only: token numbers, the model name, session and agent ids, the
@@ -217,8 +228,9 @@ log-in page the plugin opens.
 and, only if you agree, usage counts. Never your code, prompts or file paths. See
 [Privacy and permissions](#privacy-and-permissions).
 
-**What can my agent change?** Items, notes and documents in the one workspace you chose at sign-in.
-Nothing outside it, and you can revoke the access at any time.
+**What can my agent change?** Items, notes, documents and settings in the one workspace you chose
+at sign-in; inviting someone or creating a token waits for your approval. Nothing outside that
+workspace, and you can revoke the access at any time.
 
 **What does it cost?** Nothing. Tasks is a free hobby project, with no paid plans: the plugin
 (MIT-licensed), local mode and hosted Tasks alike.

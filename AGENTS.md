@@ -56,7 +56,8 @@ You can't complete these yourself. Tell the user exactly this, for their tool:
 Be accurate, and say no more than this:
 
 - **The Tasks MCP server** (`https://tasks.vinguler.com/mcp`): your agent reads and writes items,
-  notes and documents in the one workspace the user chose.
+  notes, documents and settings in the one workspace the user chose. Inviting a member and
+  creating a token wait for the user's approval (Settings › Approvals) unless they turn that off.
 - **Six skills:** `tasks-workflow` (how to work with Tasks, and the first-run setup), `wrap-up`
   (end a session with a handover), `continue` (resume one), `tasks-local` (the same way of working
   in local markdown files, no account), `move-to-hosted` (move local work into Tasks) and
